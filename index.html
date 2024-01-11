@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TRPG DICE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;900&family=Rubik+Dirt&display=swap");
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 90svh;
+        width: 80svw;
+      }
+      .control {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+      }
+      .control > div {
+        display: flex;
+        flex-direction: row;
+      }
+      .control > .dice-btn {
+        margin-bottom: 30px;
+      }
+      .control > .roll-btn > #roll {
+        font-size: 30px;
+      }
+      .display {
+        border: 1px solid var(--form-text);
+        min-height: 120px;
+        height: fit-content;
+        width: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 40px;
+      }
+      .display > .dice {
+        display: flex;
+        position: relative;
+        background-color: rgba(127, 127, 127, 0.5);
+        height: 80px;
+        width: 80px;
+        min-width: 80px;
+        margin: 3px;
+        cursor: pointer;
+        transition-property: opacity;
+        transition-duration: 80ms;
+        transition-timing-function: linear;
+        justify-content: center;
+        align-items: center;
+      }
+      .dice:hover {
+        opacity: 0.3;
+      }
+      .dice::after {
+        content: attr(data-max);
+        font-family: "M PLUS 1p", sans-serif;
+        font-weight: 900;
+        position: absolute;
+        font-size: 35px;
+        opacity: 0.3;
+      }
+      .face {
+        font-family: "Rubik Dirt", sans-serif;
+        font-size: 38px;
+        color: var(--form-text);
+        z-index: 2;
+      }
+      .dice[data-max="6"] {
+        background-color: rgba(255, 0, 0, 0.3);
+        color: rgb(255, 0, 0);
+      }
+      .dice[data-max="8"] {
+        background-color: rgba(128, 255, 0, 0.3);
+        color: rgb(128, 255, 0);
+      }
+      .dice[data-max="10"] {
+        background-color: rgba(0, 255, 255, 0.3);
+        color: rgb(0, 255, 255);
+      }
+      .dice[data-max="100"] {
+        background-color: rgba(0, 0, 255, 0.3);
+        color: rgb(0, 0, 255);
+      }
+      .total {
+        display: flex;
+        margin-top: 30px;
+        justify-content: center;
+        align-items: center;
+      }
+      .total > span {
+        font-family: "Rubik Dirt", sans-serif;
+        color: var(--form-text);
+        font-size: 45px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TRPG Dice</h1>
+    <div class="control">
+      <div class="dice-btn"><button id="diceA">6面</button><button id="diceB">8面</button><button id="diceC">10面</button><button id="diceD">100面</button></div>
+      <div class="roll-btn"><button id="roll">ROLL</button></div>
+    </div>
+    <div class="display"></div>
+    <div class="total"><span></span></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
