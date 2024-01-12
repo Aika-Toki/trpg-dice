@@ -55,7 +55,7 @@ function roll() {
   let soundInterval = setInterval(() => {
     soundCount++;
     playDiceSound();
-    if (soundCount > Math.floor(dice.length / 2)) {
+    if (soundCount > Math.min(Math.floor(dice.length / 2), 8)) {
       clearInterval(soundInterval);
     }
   }, 120);
